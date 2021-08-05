@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package twirp.example.cordswainer.v1;
+option go_package = "github.com/jeffreylo/twirp-multiple-services/rpc/cordswainer/v1";
+
+// Cordswainer service makes shoes for clients.
+service Cordswainer {
+  // MakeShoe produces a shoe of mysterious, randomly-selected color!
+  rpc MakeShoe(Size) returns (Shoe);
+}
+
+// Size of a Shoe, in inches.
+message Size {
+  int32 inches = 1; // must be > 0
+}
+
+// A Shoe is a piece of footwear made by a Cordswainer.
+message Shoe {
+  int32 inches = 1;
+  string color = 2; // anything but "invisible"
+  string name = 3; // i.e. "bowler"
+}
